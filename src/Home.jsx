@@ -220,7 +220,7 @@ P R O C    S S`}
       </section>
 
       {/* Crossword Section */}
-      <section className="py-6 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkbrown">
@@ -232,7 +232,7 @@ P R O C    S S`}
           </div>
           <Cross />
         </div>
-      </section>
+      </section> */}
 
       {/* Services Section */}
       <section className="pt-8 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-50">
