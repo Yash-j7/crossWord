@@ -54,6 +54,16 @@ function Footer() {
         </div>
         <div className="text-darkbrown text-sm mb-2">404 805 6664</div>
       </div>
+      
+      {/* E-Verify Certification Section */}
+      <div className="flex justify-center items-center mb-4">
+        <img 
+          src="/src/assets/e-verify.png" 
+          alt="E-Verify Certification" 
+          className="h-12 sm:h-16 object-contain"
+        />
+      </div>
+      
       <p className="text-xs sm:text-sm mt-4">
         © 2025 Crossword Staffing Solutions
       </p>
