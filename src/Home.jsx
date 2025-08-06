@@ -102,7 +102,7 @@ function useCounter(target, duration = 1200) {
 
 function Home() {
   const years = useCounter(5, 2200);
-  const experts = useCounter(100, 2200);
+  const experts = useCounter(50, 2200);
   const clients = useCounter(30, 2200);
 
   return (

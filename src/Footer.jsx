@@ -4,6 +4,7 @@ import {
   FaTwitter,
   FaInstagram,
 } from "react-icons/fa";
+import eVerify from "./assets/e-verify.png";
 
 function Footer() {
   return (
@@ -58,7 +59,7 @@ function Footer() {
       {/* E-Verify Certification Section */}
       <div className="flex justify-center items-center mb-4">
         <img 
-          src="/src/assets/e-verify.png" 
+          src={eVerify} 
           alt="E-Verify Certification" 
           className="h-12 sm:h-16 object-contain"
         />
