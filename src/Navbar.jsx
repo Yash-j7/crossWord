@@ -46,8 +46,7 @@ function Navbar() {
             { label: 'Enterprise Transformation and Automation', to: '/industry/it-services/enterprise-transformation' },
           ]
         },
-        { label: 'Pharmaceutical', to: '/industry/pharmaceutical' },
-        { label: 'Life Sciences', to: '/industry/life-sciences' },
+        { label: 'Healthcare', to: '/industry/healthcare' },
         { label: 'Manufacturing', to: '/industry/manufacturing' },
         { 
           label: 'Consulting', 
