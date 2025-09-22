@@ -12,6 +12,7 @@ import Manufacturing from './Manufacturing';
 import Contact from './Contact';
 import './App.css';
 import CrosswordHero from './Cross';
+import Careers from './Careers';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
           <Route path="/industry/manufacturing" element={<Manufacturing />} />
           
           <Route path="/contact" element={<Contact />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/career" element={<Careers />} />
           <Route path="/cross" element={<CrosswordHero />} />
         </Routes>
         <Footer />

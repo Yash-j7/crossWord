@@ -23,18 +23,6 @@ function Navbar() {
   const navItems = [
     { id: 'home', label: 'HOME', to: '/' },
     {
-      id: 'about',
-      label: 'ABOUT US',
-      to: '/about',
-      submenu: [
-        { label: 'About Crossword', hash: 'about-crossword' },
-        { label: 'The Crossword Way', hash: 'crossword-way' },
-        { label: 'Our Mission', hash: 'mission' },
-        { label: 'Crossword Cares', hash: 'crossword-cares' },
-        { label: 'Diversity, Equity, and Inclusion', hash: 'dei' },
-      ]
-    },
-    {
       id: 'industry',
       label: 'INDUSTRY',
       to: '#',
@@ -75,7 +63,20 @@ function Navbar() {
         { label: 'On-demand RPO', to: '#' }
       ]
     },
-    { id: 'contact', label: 'CONTACT', to: '/contact' }
+    {
+      id: 'about',
+      label: 'ABOUT US',
+      to: '/about',
+      submenu: [
+        { label: 'About Crossword', hash: 'about-crossword' },
+        { label: 'The Crossword Way', hash: 'crossword-way' },
+        { label: 'Our Mission', hash: 'mission' },
+        { label: 'Crossword Cares', hash: 'crossword-cares' },
+        { label: 'Diversity, Equity, and Inclusion', hash: 'dei' },
+      ]
+    },
+    { id: 'contact', label: 'CONTACT US', to: '/contact' },
+    { id: 'careers', label: 'CAREERS', to: '/careers' }
   ];
 
   const toggleSubmenu = (itemId) => {
@@ -236,12 +237,8 @@ function Navbar() {
                 </div>
               ))}
             </div>
-            {/* CTA Button - Desktop */}
-            <div className="flex items-center gap-4">
-              <button className="bg-gradient-to-r from-sand-dark to-brown-light text-sand-light px-6 py-2 rounded-lg font-semibold hover:from-brown-light hover:to-sand-dark transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Get Quote
-              </button>
-            </div>
+            {/* CTA Button - Desktop removed */}
+            <div className="flex items-center gap-4" />
           </div>
         </div>
 
@@ -354,12 +351,8 @@ function Navbar() {
                 ))}
               </div>
               
-              {/* Mobile CTA at bottom */}
-              <div className="mt-auto pt-4 border-t border-gray-200 flex-shrink-0">
-                <button className="w-full bg-gradient-to-r from-sand-dark to-brown-light text-sand-light px-6 py-3 rounded-lg font-semibold hover:from-brown-light hover:to-sand-dark transition-all duration-300 shadow-lg">
-                  Get Quote
-                </button>
-              </div>
+              {/* Mobile CTA removed */}
+              <div className="mt-auto pt-4 border-t border-gray-200 flex-shrink-0" />
             </div>
           </div>
         )}
