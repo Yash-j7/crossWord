@@ -280,7 +280,6 @@ export default function Careers() {
   
 I would like to apply for the role ${job.title} (Job ID: ${job.id}).
 
-Experience: ${job.experienceYears === 0 ? 'Fresher' : job.experienceYears + '+ years'}
 Location preference: ${job.location}
 
 Best regards,
