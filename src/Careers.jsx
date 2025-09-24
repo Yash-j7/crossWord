@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { Filter, MapPin, Briefcase, FileDown, ExternalLink, Mail, Search, X, Clock, Building } from "lucide-react";
 import samplePDF from "../src/assets/Sample.pdf";
+import projectEngineerPDF from "../src/assets/projectEngg_JD.pdf";
+import electricalCADDesignerPDF from "../src/assets/CAD_JD.pdf";
 export default function Careers() {
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
@@ -11,208 +13,231 @@ export default function Careers() {
 
   const jobs = useMemo(
     () => [
-      { 
-        id: "CX-1001", 
-        title: "Frontend Engineer", 
-        type: "Full-time", 
-        location: "Bengaluru, IN", 
-        experienceYears: 3, 
-        description: "Build and optimize React-based web applications with a focus on accessibility and performance.", 
-        pdfPath: "/assets/Sample.pdf",
+      {
+        id: "CX-1001",
+        title: "Electrical CAD Designer",
+        type: "Full-time",
+        location: "Alpharetta, GA",
+        // experienceYears: 3,
+        description: "Seeking an experienced Electrical CAD Designer skilled in AutoCAD Electrical and electrical system design (oil & gas), to draft, design, and guide junior staff under general supervision",
+        pdfPath: electricalCADDesignerPDF,
         department: "Engineering",
-        postedDate: "2 days ago"
+        postedDate: "24 Sep 2025"
       },
-      { 
-        id: "CX-1002", 
-        title: "Backend Engineer", 
-        type: "Full-time", 
-        location: "Remote", 
-        experienceYears: 4, 
-        description: "Design REST APIs, microservices, and databases with Node.js and PostgreSQL.", 
-        pdfPath: "/assets/Sample.pdf",
+      {
+        id: "CX-1002",
+        title: "Project Engineer",
+        type: "Full-time",
+        location: "Cumming, GA",
+        // experienceYears: 3,
+        description: "Lead end-to-end pharmaceutical CAPEX projects from design to commissioning, ensuring quality, budget, and schedule compliance.",
+        pdfPath: projectEngineerPDF,
         department: "Engineering",
-        postedDate: "1 week ago"
-      },
-      { 
-        id: "CX-1003", 
-        title: "Data Analyst", 
-        type: "Contract", 
-        location: "Hyderabad, IN", 
-        experienceYears: 2, 
-        description: "Create dashboards, analyze datasets, and present insights to stakeholders.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Analytics",
-        postedDate: "3 days ago"
-      },
-      { 
-        id: "CX-1004", 
-        title: "Project Manager", 
-        type: "Full-time", 
-        location: "New Delhi, IN", 
-        experienceYears: 5, 
-        description: "Lead cross-functional teams, manage timelines, and drive delivery.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Operations",
-        postedDate: "5 days ago"
-      },
-      { 
-        id: "CX-1005", 
-        title: "QA Engineer", 
-        type: "Contract", 
-        location: "Remote", 
-        experienceYears: 3, 
-        description: "Author test plans, automate regression suites, ensure release quality.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Quality Assurance",
-        postedDate: "1 week ago"
-      },
-      { 
-        id: "CX-1006", 
-        title: "Mobile Developer", 
-        type: "Full-time", 
-        location: "Pune, IN", 
-        experienceYears: 4, 
-        description: "Develop React Native apps and ship features rapidly.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Engineering",
-        postedDate: "4 days ago"
-      },
-      { 
-        id: "CX-1007", 
-        title: "DevOps Engineer", 
-        type: "Full-time", 
-        location: "Remote", 
-        experienceYears: 3, 
-        description: "Own CI/CD, observability, and cloud infrastructure (AWS).", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Infrastructure",
-        postedDate: "2 days ago"
-      },
-      { 
-        id: "CX-1008", 
-        title: "UI/UX Designer", 
-        type: "Full-time", 
-        location: "Kolkata, IN", 
-        experienceYears: 2, 
-        description: "Design delightful user experiences and maintain design systems.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Design",
-        postedDate: "6 days ago"
-      },
-      { 
-        id: "CX-1009", 
-        title: "Business Analyst", 
-        type: "Full-time", 
-        location: "Gurugram, IN", 
-        experienceYears: 3, 
-        description: "Gather requirements, document processes, and support delivery teams.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Business",
-        postedDate: "1 week ago"
-      },
-      { 
-        id: "CX-1010", 
-        title: "Healthcare Recruiter", 
-        type: "Full-time", 
-        location: "Remote", 
-        experienceYears: 2, 
-        description: "Source and screen candidates, manage pipelines, and coordinate interviews.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Human Resources",
-        postedDate: "3 days ago"
-      },
-      { 
-        id: "CX-1011", 
-        title: "Manufacturing Consultant", 
-        type: "Contract", 
-        location: "Ahmedabad, IN", 
-        experienceYears: 6, 
-        description: "Advise manufacturing clients on process optimization.", 
-        pdfPath: "/assets/Sample.pdf",
-        department: "Consulting",
-        postedDate: "5 days ago"
-      },
-      { 
-        id: "CX-1012", 
-        title: "IT Support Specialist", 
-        type: "Full-time", 
-        location: "Chennai, IN", 
-        experienceYears: 1, 
-        description: "Provide L1/L2 support and manage incident queues.", 
-        pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
-        department: "IT Support",
-        postedDate: "2 weeks ago"
-      },
-      // Fresher positions
-      { 
-        id: "CX-2001", 
-        title: "Junior Frontend Developer", 
-        type: "Full-time", 
-        location: "Bengaluru, IN", 
-        experienceYears: 0, 
-        description: "Learn and develop modern web applications using React, HTML, CSS, and JavaScript. Perfect for recent graduates.", 
-        pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
-        department: "Engineering",
-        postedDate: "1 day ago"
-      },
-      { 
-        id: "CX-2002", 
-        title: "Trainee Software Engineer", 
-        type: "Full-time", 
-        location: "Hyderabad, IN", 
-        experienceYears: 0, 
-        description: "Join our comprehensive training program and kickstart your career in software development.", 
-        pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
-        department: "Engineering",
-        postedDate: "2 days ago"
-      },
-      { 
-        id: "CX-2003", 
-        title: "Associate Data Analyst", 
-        type: "Full-time", 
-        location: "Mumbai, IN", 
-        experienceYears: 0, 
-        description: "Entry-level position to learn data analysis, visualization, and business intelligence tools.", 
-        pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
-        department: "Analytics",
-        postedDate: "1 day ago"
-      },
-      { 
-        id: "CX-2004", 
-        title: "Junior QA Tester", 
-        type: "Full-time", 
-        location: "Noida, IN", 
-        experienceYears: 0, 
-        description: "Learn software testing methodologies and quality assurance processes from experienced mentors.", 
-        pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
-        department: "Quality Assurance",
-        postedDate: "3 days ago"
-      },
-      { 
-        id: "CX-2005", 
-        title: "Graduate Trainee - Business Analyst", 
-        type: "Full-time", 
-        location: "Chennai, IN", 
-        experienceYears: 0, 
-        description: "Start your career in business analysis with comprehensive training and mentorship.", 
-        pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
-        department: "Business",
-        postedDate: "4 days ago"
-      },
-      { 
-        id: "CX-2006", 
-        title: "Junior UI/UX Designer", 
-        type: "Full-time", 
-        location: "Remote", 
-        experienceYears: 0, 
-        description: "Design beautiful and intuitive user interfaces while learning from senior designers.", 
-        pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
-        department: "Design",
-        postedDate: "1 day ago"
+        postedDate: "24 Sep 2025"
       }
+  //     { 
+  //       id: "CX-1001", 
+  //       title: "Frontend Engineer", 
+  //       type: "Full-time", 
+  //       location: "Bengaluru, IN", 
+  //       experienceYears: 3, 
+  //       description: "Build and optimize React-based web applications with a focus on accessibility and performance.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Engineering",
+  //       postedDate: "2 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1002", 
+  //       title: "Backend Engineer", 
+  //       type: "Full-time", 
+  //       location: "Remote", 
+  //       experienceYears: 4, 
+  //       description: "Design REST APIs, microservices, and databases with Node.js and PostgreSQL.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Engineering",
+  //       postedDate: "1 week ago"
+  //     },
+  //     { 
+  //       id: "CX-1003", 
+  //       title: "Data Analyst", 
+  //       type: "Contract", 
+  //       location: "Hyderabad, IN", 
+  //       experienceYears: 2, 
+  //       description: "Create dashboards, analyze datasets, and present insights to stakeholders.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Analytics",
+  //       postedDate: "3 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1004", 
+  //       title: "Project Manager", 
+  //       type: "Full-time", 
+  //       location: "New Delhi, IN", 
+  //       experienceYears: 5, 
+  //       description: "Lead cross-functional teams, manage timelines, and drive delivery.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Operations",
+  //       postedDate: "5 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1005", 
+  //       title: "QA Engineer", 
+  //       type: "Contract", 
+  //       location: "Remote", 
+  //       experienceYears: 3, 
+  //       description: "Author test plans, automate regression suites, ensure release quality.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Quality Assurance",
+  //       postedDate: "1 week ago"
+  //     },
+  //     { 
+  //       id: "CX-1006", 
+  //       title: "Mobile Developer", 
+  //       type: "Full-time", 
+  //       location: "Pune, IN", 
+  //       experienceYears: 4, 
+  //       description: "Develop React Native apps and ship features rapidly.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Engineering",
+  //       postedDate: "4 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1007", 
+  //       title: "DevOps Engineer", 
+  //       type: "Full-time", 
+  //       location: "Remote", 
+  //       experienceYears: 3, 
+  //       description: "Own CI/CD, observability, and cloud infrastructure (AWS).", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Infrastructure",
+  //       postedDate: "2 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1008", 
+  //       title: "UI/UX Designer", 
+  //       type: "Full-time", 
+  //       location: "Kolkata, IN", 
+  //       experienceYears: 2, 
+  //       description: "Design delightful user experiences and maintain design systems.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Design",
+  //       postedDate: "6 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1009", 
+  //       title: "Business Analyst", 
+  //       type: "Full-time", 
+  //       location: "Gurugram, IN", 
+  //       experienceYears: 3, 
+  //       description: "Gather requirements, document processes, and support delivery teams.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Business",
+  //       postedDate: "1 week ago"
+  //     },
+  //     { 
+  //       id: "CX-1010", 
+  //       title: "Healthcare Recruiter", 
+  //       type: "Full-time", 
+  //       location: "Remote", 
+  //       experienceYears: 2, 
+  //       description: "Source and screen candidates, manage pipelines, and coordinate interviews.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Human Resources",
+  //       postedDate: "3 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1011", 
+  //       title: "Manufacturing Consultant", 
+  //       type: "Contract", 
+  //       location: "Ahmedabad, IN", 
+  //       experienceYears: 6, 
+  //       description: "Advise manufacturing clients on process optimization.", 
+  //       pdfPath: "/assets/Sample.pdf",
+  //       department: "Consulting",
+  //       postedDate: "5 days ago"
+  //     },
+  //     { 
+  //       id: "CX-1012", 
+  //       title: "IT Support Specialist", 
+  //       type: "Full-time", 
+  //       location: "Chennai, IN", 
+  //       experienceYears: 1, 
+  //       description: "Provide L1/L2 support and manage incident queues.", 
+  //       pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
+  //       department: "IT Support",
+  //       postedDate: "2 weeks ago"
+  //     },
+  //     // Fresher positions
+  //     { 
+  //       id: "CX-2001", 
+  //       title: "Junior Frontend Developer", 
+  //       type: "Full-time", 
+  //       location: "Bengaluru, IN", 
+  //       experienceYears: 0, 
+  //       description: "Learn and develop modern web applications using React, HTML, CSS, and JavaScript. Perfect for recent graduates.", 
+  //       pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
+  //       department: "Engineering",
+  //       postedDate: "1 day ago"
+  //     },
+  //     { 
+  //       id: "CX-2002", 
+  //       title: "Trainee Software Engineer", 
+  //       type: "Full-time", 
+  //       location: "Hyderabad, IN", 
+  //       experienceYears: 0, 
+  //       description: "Join our comprehensive training program and kickstart your career in software development.", 
+  //       pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
+  //       department: "Engineering",
+  //       postedDate: "2 days ago"
+  //     },
+  //     { 
+  //       id: "CX-2003", 
+  //       title: "Associate Data Analyst", 
+  //       type: "Full-time", 
+  //       location: "Mumbai, IN", 
+  //       experienceYears: 0, 
+  //       description: "Entry-level position to learn data analysis, visualization, and business intelligence tools.", 
+  //       pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
+  //       department: "Analytics",
+  //       postedDate: "1 day ago"
+  //     },
+  //     { 
+  //       id: "CX-2004", 
+  //       title: "Junior QA Tester", 
+  //       type: "Full-time", 
+  //       location: "Noida, IN", 
+  //       experienceYears: 0, 
+  //       description: "Learn software testing methodologies and quality assurance processes from experienced mentors.", 
+  //       pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
+  //       department: "Quality Assurance",
+  //       postedDate: "3 days ago"
+  //     },
+  //     { 
+  //       id: "CX-2005", 
+  //       title: "Graduate Trainee - Business Analyst", 
+  //       type: "Full-time", 
+  //       location: "Chennai, IN", 
+  //       experienceYears: 0, 
+  //       description: "Start your career in business analysis with comprehensive training and mentorship.", 
+  //       pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
+  //       department: "Business",
+  //       postedDate: "4 days ago"
+  //     },
+  //     { 
+  //       id: "CX-2006", 
+  //       title: "Junior UI/UX Designer", 
+  //       type: "Full-time", 
+  //       location: "Remote", 
+  //       experienceYears: 0, 
+  //       description: "Design beautiful and intuitive user interfaces while learning from senior designers.", 
+  //       pdfPath: "/assets/EY India 2026 - Tech Risk - Assurance - Sr. Analyst - JD.pdf",
+  //       department: "Design",
+  //       postedDate: "1 day ago"
+  //     }
     ],
     []
   );
+  
 
   const filteredJobs = useMemo(() => {
     return jobs.filter((job) => {
@@ -235,11 +260,7 @@ export default function Careers() {
 
   const jobsToShow = showAll ? filteredJobs : filteredJobs.slice(0, 10);
 
-  const handleView = (job) => {
-    if (job.pdfPath) {
-      window.open(samplePDF, "_blank");
-    }
-  };
+  
 
   const handleDownload = (job) => {
     if (job.pdfPath) {
@@ -551,14 +572,14 @@ Best regards,
                     
                     {/* Job Meta Information */}
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-                      <div className="flex items-center gap-2">
+                      {/* <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#D2B48C] to-[#F5DEB3] flex items-center justify-center">
                           <Clock className="w-4 h-4 text-[#8B4513]" />
                         </div>
                         <span className="font-medium">
                           {job.experienceYears === 0 ? 'Entry Level' : `${job.experienceYears}+ yrs exp`}
                         </span>
-                      </div>
+                      </div> */}
                       
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#D2B48C] to-[#F5DEB3] flex items-center justify-center">
@@ -584,7 +605,11 @@ Best regards,
                   {/* Enhanced Action Buttons */}
                   <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center gap-3 lg:w-auto">
                     <button
-                      onClick={() => handleView(job)}
+                      onClick={() => {
+                        if (job.pdfPath) {
+                          window.open(job.pdfPath, "_blank");
+                        }
+                      }}
                       className="group/btn relative inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-[#D2B48C] bg-white/90 backdrop-blur-sm hover:bg-[#F5DEB3]/30 text-sm font-semibold transition-all duration-200 cursor-pointer hover:shadow-lg active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#8B4513]/40 overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#F5DEB3]/0 via-[#F5DEB3]/20 to-[#F5DEB3]/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
