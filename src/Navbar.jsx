@@ -8,6 +8,62 @@ function Navbar() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const mobileMenuRef = useRef(null);
   const location = useLocation();
+  const [isReferralOpen, setIsReferralOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    company: '',
+    mobile: '',
+    email: '',
+    resume: null,
+  });
+  const [formErrors, setFormErrors] = useState({});
+
+  const closeReferral = () => {
+    setIsReferralOpen(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === 'resume' ? (files && files[0] ? files[0] : null) : value,
+    }));
+  };
+
+  const validate = () => {
+    const errors = {};
+    if (!formData.firstName.trim()) errors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) errors.lastName = 'Last name is required';
+    if (!formData.company.trim()) errors.company = 'Company is required';
+    if (!formData.mobile.trim()) errors.mobile = 'Mobile is required';
+    if (!/^[0-9+\-()\s]{7,}$/.test(formData.mobile.trim())) errors.mobile = 'Enter a valid phone number';
+    if (!formData.email.trim()) errors.email = 'Email is required';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) errors.email = 'Enter a valid email';
+    if (!formData.resume) errors.resume = 'Resume is required';
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+    const payload = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      company: formData.company,
+      mobile: formData.mobile,
+      email: formData.email,
+      resumeFileName: formData.resume ? formData.resume.name : null,
+    };
+    // No backend yet: simulate success, log for future integration
+    console.log('Employee referral submission:', payload);
+    alert('Thank you! Your referral has been recorded.');
+    setFormData({ firstName: '', lastName: '', company: '', mobile: '', email: '', resume: null });
+    setFormErrors({});
+    setIsReferralOpen(false);
+  };
 
   // Close menu when clicking outside (using ref)
   useEffect(() => {
@@ -103,16 +159,18 @@ function Navbar() {
               </div>
             </Link>
             <span className="font-black text-lg text-darkbrown bg-clip-text">CROSSWORD</span>
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
-              )}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6 text-gray-700" />
+                ) : (
+                  <Menu className="w-6 h-6 text-gray-700" />
+                )}
+              </button>
+            </div>
           </div>
           {/* Desktop Navbar: only visible on sm and up */}
           <div className="hidden sm:flex justify-between items-center h-16 lg:h-20" ref={mobileMenuRef}>
@@ -237,8 +295,17 @@ function Navbar() {
                 </div>
               ))}
             </div>
-            {/* CTA Button - Desktop removed */}
-            <div className="flex items-center gap-4" />
+            {/* Right-side CTA: Employee Referral */}
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => setIsReferralOpen(true)}
+                className="hidden text-black sm:inline-flex items-center px-4 py-2 rounded-lg font-semibold text-sm tracking-wide  bg-brown-DEFAULT hover:bg-brown-dark transition-colors duration-200 shadow"
+                aria-label="Open Employee Referral form"
+              >
+                Employee Referral
+              </button>
+            </div>
           </div>
         </div>
 
@@ -349,15 +416,149 @@ function Navbar() {
                     )}
                   </div>
                 ))}
+                {/* Employee Referral action below Careers */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsReferralOpen(true);
+                  }}
+                  className="w-full flex items-center justify-between px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 text-left text-black bg-brown-DEFAULT hover:bg-brown-dark shadow"
+                >
+                  Employee Referral
+                </button>
               </div>
               
-              {/* Mobile CTA removed */}
               <div className="mt-auto pt-4 border-t border-gray-200 flex-shrink-0" />
             </div>
           </div>
         )}
       </nav>
       <div className="h-16 lg:h-20" />
+
+      {/* Employee Referral Modal */}
+      {isReferralOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={closeReferral}
+          />
+          <div className="relative bg-white w-[92vw] max-w-2xl rounded-2xl shadow-2xl border border-gray-200 p-6 sm:p-8 mx-4">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Employee Referral</h2>
+                <p className="text-sm text-gray-500 mt-1">Refer a candidate and help us grow the team.</p>
+              </div>
+              <button
+                onClick={closeReferral}
+                className="ml-4 p-2 rounded-lg hover:bg-gray-100 text-gray-600"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.firstName ? 'border-red-400' : 'border-gray-300'}`}
+                    placeholder="Albert"
+                  />
+                  {formErrors.firstName && <p className="mt-1 text-xs text-red-500">{formErrors.firstName}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.lastName ? 'border-red-400' : 'border-gray-300'}`}
+                    placeholder="Doe"
+                  />
+                  {formErrors.lastName && <p className="mt-1 text-xs text-red-500">{formErrors.lastName}</p>}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.company ? 'border-red-400' : 'border-gray-300'}`}
+                    placeholder="Company"
+                  />
+                  {formErrors.company && <p className="mt-1 text-xs text-red-500">{formErrors.company}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Mobile</label>
+                  <input
+                    type="tel"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.mobile ? 'border-red-400' : 'border-gray-300'}`}
+                    placeholder="e.g., +1 555 123 4567"
+                  />
+                  {formErrors.mobile && <p className="mt-1 text-xs text-red-500">{formErrors.mobile}</p>}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="sm:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.email ? 'border-red-400' : 'border-gray-300'}`}
+                    placeholder="you@example.com"
+                  />
+                  {formErrors.email && <p className="mt-1 text-xs text-red-500">{formErrors.email}</p>}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Resume</label>
+                <input
+                  type="file"
+                  name="resume"
+                  onChange={handleChange}
+                  accept=".pdf,.doc,.docx,.txt"
+                  className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none file:mr-3 file:px-3 file:py-2 file:rounded-md file:border-0 file:bg-sand-light file:text-gray-700 ${formErrors.resume ? 'border-red-400' : 'border-gray-300'}`}
+                />
+                {formErrors.resume && <p className="mt-1 text-xs text-red-500">{formErrors.resume}</p>}
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={closeReferral}
+                  className="px-4 py-2 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-100"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-lg text-sm font-semibold text-black bg-brown-DEFAULT hover:bg-brown-dark shadow"
+                >
+                  Submit Referral
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }
