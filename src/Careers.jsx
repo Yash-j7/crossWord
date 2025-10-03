@@ -20,6 +20,7 @@ export default function Careers() {
         location: "Alpharetta, GA",
         // experienceYears: 3,
         description: "Seeking an experienced Electrical CAD Designer skilled in AutoCAD Electrical and electrical system design (oil & gas), to draft, design, and guide junior staff under general supervision",
+        note: "This position is eligible for the employment referral program. The employee will be offered a referral fee of $500 per successful referral. We thank you for your participation.",
         pdfPath: electricalCADDesignerPDF,
         department: "Engineering",
         postedDate: "24 Sep 2025"
@@ -31,6 +32,7 @@ export default function Careers() {
         location: "Cumming, GA",
         // experienceYears: 3,
         description: "Lead end-to-end pharmaceutical CAPEX projects from design to commissioning, ensuring quality, budget, and schedule compliance.",
+        note: "This position is eligible for the employment referral program. The employee will be offered a referral fee of $500 per successful referral. We thank you for your participation.",
         pdfPath: projectEngineerPDF,
         department: "Engineering",
         postedDate: "24 Sep 2025"
@@ -597,6 +599,12 @@ Best regards,
                       <p className="text-gray-700 leading-relaxed max-w-4xl group-hover:text-gray-800 transition-colors duration-200">
                         {job.description}
                       </p>
+                      {job.note && (
+   <p className="mt-2 pl-3 border-l-4 border-yellow-400 text-sm text-gray-600">
+  <span className="font-semibold">Note:</span> {job.note}
+</p>
+
+  )}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
                   </div>
