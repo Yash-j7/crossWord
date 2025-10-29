@@ -207,9 +207,7 @@ function Home() {
               <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 ml-2 inline group-hover:rotate-180 transition-transform duration-300" />
             </button>
             </Link>
-            <button onClick={handleScroll} className="group border-2 border-sand-dark text-darkbrown px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-lg sm:text-xl hover:bg-sand-dark hover:text-sand-light active:bg-sand-dark active:text-sand-light transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl w-full sm:w-auto min-h-[48px] touch-manipulation">
-              Learn More
-            </button>
+           
           </div>
 
           <div className="animate-bounce animate-infinite-slow">
