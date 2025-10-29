@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import technologyImg from "./assets/tech2.jpg";
 import tech from "./assets/tech.png";
+import { Link } from "react-router-dom";
 
 const Technology = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -80,6 +81,7 @@ const Technology = () => {
           
           {/* Enhanced CTA Section */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-12">
+          <Link to="/contact">
             <button className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-lg rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-3 hover:scale-105 transition-all duration-500 overflow-hidden backdrop-blur-sm border border-white/20">
               <span className="relative z-10 flex items-center gap-3">
                 Get Started
@@ -89,10 +91,8 @@ const Technology = () => {
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </button>
-            
-            <button className="group px-10 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold text-lg rounded-2xl border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transform hover:-translate-y-1 transition-all duration-300">
-              Learn More
-            </button>
+            </Link>
+          
           </div>
           
           {/* Stats Section */}
@@ -309,9 +309,11 @@ const Technology = () => {
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Join hundreds of companies that have accelerated their digital transformation with our expert technology teams.
             </p>
+            <Link to="/contact">
             <button className="bg-white text-blue-600 px-10 py-4 rounded-2xl font-bold text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
               Start Your Journey
             </button>
+            </Link>
           </div>
         </section>
       </div>

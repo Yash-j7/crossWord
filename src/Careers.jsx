@@ -3,6 +3,7 @@ import { Filter, MapPin, Briefcase, FileDown, ExternalLink, Mail, Search, X, Clo
 import samplePDF from "../src/assets/Sample.pdf";
 import projectEngineerPDF from "../src/assets/projectEngg_JD.pdf";
 import electricalCADDesignerPDF from "../src/assets/CAD_JD.pdf";
+import { Link } from "react-router-dom";
 export default function Careers() {
   const [query, setQuery] = useState("");
   const [location, setLocation] = useState("");
@@ -704,13 +705,13 @@ Best regards,
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities.
             </p>
+            <Link to="/contact">
             <button
-              onClick={() => window.open('mailto:hr@crosswordstaffing.com?subject=General Application', '_blank')}
               className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#8B4513] to-[#A0522D] text-white rounded-2xl hover:shadow-lg hover:shadow-[#8B4513]/25 transition-all duration-200 cursor-pointer active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#8B4513]/40 font-semibold"
             >
-              <Mail className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
               <span>Send General Application</span>
             </button>
+            </Link>
           </div>
         </div>
       </div>

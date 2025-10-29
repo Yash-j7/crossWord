@@ -20,6 +20,7 @@ import conversationGif from "./assets/conversation.gif";
 import domainsGif from "./assets/domains.gif";
 import internetGif from "./assets/internet.gif";
 import bgImg from "./assets/bg.jpg";
+import { Link } from "react-router-dom";
 
 const gifSections = [
   {
@@ -130,6 +131,13 @@ function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const handleScroll = () => {
+    window.scrollBy({
+      top: 400, // scroll down 200px
+      behavior: "smooth" // smooth animation
+    });
+  };
+
   return (
     <>
       {/* Hero Section with Neutral Background */}
@@ -193,11 +201,13 @@ function Home() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-12 sm:mb-16 animate-fade-in-up animation-delay-600 px-2">
+            <Link to="/contact">
             <button className="group bg-sand-dark text-sand-light px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-lg sm:text-xl hover:bg-brown-DEFAULT active:bg-brown-DEFAULT transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-2xl hover:shadow-3xl w-full sm:w-auto min-h-[48px] touch-manipulation">
               Get Started
               <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 ml-2 inline group-hover:rotate-180 transition-transform duration-300" />
             </button>
-            <button className="group border-2 border-sand-dark text-darkbrown px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-lg sm:text-xl hover:bg-sand-dark hover:text-sand-light active:bg-sand-dark active:text-sand-light transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl w-full sm:w-auto min-h-[48px] touch-manipulation">
+            </Link>
+            <button onClick={handleScroll} className="group border-2 border-sand-dark text-darkbrown px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-lg sm:text-xl hover:bg-sand-dark hover:text-sand-light active:bg-sand-dark active:text-sand-light transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-lg hover:shadow-xl w-full sm:w-auto min-h-[48px] touch-manipulation">
               Learn More
             </button>
           </div>
@@ -361,13 +371,13 @@ function Home() {
                       </div>
                     </div>
 
-                    <button className="group bg-darkbrown text-sand-light px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg hover:bg-brown-DEFAULT active:bg-brown-DEFAULT transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-xl hover:shadow-2xl relative overflow-hidden w-full sm:w-auto min-h-[44px] touch-manipulation">
+                    {/* <button className="group bg-darkbrown text-sand-light px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-base sm:text-lg hover:bg-brown-DEFAULT active:bg-brown-DEFAULT transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-xl hover:shadow-2xl relative overflow-hidden w-full sm:w-auto min-h-[44px] touch-manipulation">
                       <span className="relative z-10 flex items-center justify-center gap-2">
                         Learn More
                         <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-sand-light/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               );
@@ -404,16 +414,16 @@ function Home() {
             Solutions for their business needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-2">
+            <Link to="/careers">
             <button className="group bg-sand-dark text-sand-light px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-lg sm:text-xl hover:bg-brown-DEFAULT active:bg-brown-DEFAULT transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-2xl hover:shadow-3xl relative overflow-hidden w-full sm:w-auto min-h-[48px] touch-manipulation">
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                Start Your Journey
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-sand-light/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+              Start Your Journey
             </button>
+            </Link>
+            <Link to="/contact">
             <button className="group border-2 sm:border-3 border-sand-dark text-darkbrown px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-lg sm:text-xl hover:bg-sand-dark hover:text-sand-light active:bg-sand-dark active:text-sand-light transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 active:scale-95 shadow-xl hover:shadow-2xl w-full sm:w-auto min-h-[48px] touch-manipulation">
               Contact Us Today
             </button>
+            </Link>
           </div>
         </div>
       </section>

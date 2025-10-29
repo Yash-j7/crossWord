@@ -85,7 +85,7 @@ function Navbar() {
       submenu: [
         { 
           label: 'IT Services', 
-          to: '/industry/it-services',
+          to: '#',
           submenu: [
             { label: 'Enterprise Transformation and Automation', to: '/industry/it-services/enterprise-transformation' },
           ]
@@ -107,16 +107,16 @@ function Navbar() {
       label: 'RECRUITING SERVICES',
       to: '#',
       submenu: [
-        { label: 'Contingent Staff Augmentation', to: '#' },
+        { label: 'Contingent Staff Augmentation', to: '/recruiting/contingent-staffing' },
         {
           label: 'Talent Advisory',
           to: '#',
           submenu: [
-            { label: 'Contractual Hiring', to: '#' },
-            { label: 'Permanent Hiring', to: '#' }
+            { label: 'Contractual Hiring', to: '/recruiting/contractual-hiring' },
+            { label: 'Permanent Hiring', to: '/recruiting/permanent-hiring' }
           ]
         },
-        { label: 'On-demand RPO', to: '#' }
+        { label: 'On-demand RPO', to: '/recruiting/on-demand-rpo' }
       ]
     },
     {
