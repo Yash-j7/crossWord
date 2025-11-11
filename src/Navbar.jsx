@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import logoSrc from './assets/image.png';
+import { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
+import logo from "./assets/logo.png";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,11 +11,11 @@ function Navbar() {
   const [isReferralOpen, setIsReferralOpen] = useState(false);
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    company: '',
-    mobile: '',
-    email: '',
+    firstName: "",
+    lastName: "",
+    company: "",
+    mobile: "",
+    email: "",
     resume: null,
   });
   const [formErrors, setFormErrors] = useState({});
@@ -28,20 +28,22 @@ function Navbar() {
     const { name, value, files } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'resume' ? (files && files[0] ? files[0] : null) : value,
+      [name]: name === "resume" ? (files && files[0] ? files[0] : null) : value,
     }));
   };
 
   const validate = () => {
     const errors = {};
-    if (!formData.firstName.trim()) errors.firstName = 'First name is required';
-    if (!formData.lastName.trim()) errors.lastName = 'Last name is required';
-    if (!formData.company.trim()) errors.company = 'Company is required';
-    if (!formData.mobile.trim()) errors.mobile = 'Mobile is required';
-    if (!/^[0-9+\-()\s]{7,}$/.test(formData.mobile.trim())) errors.mobile = 'Enter a valid phone number';
-    if (!formData.email.trim()) errors.email = 'Email is required';
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) errors.email = 'Enter a valid email';
-    if (!formData.resume) errors.resume = 'Resume is required';
+    if (!formData.firstName.trim()) errors.firstName = "First name is required";
+    if (!formData.lastName.trim()) errors.lastName = "Last name is required";
+    if (!formData.company.trim()) errors.company = "Company is required";
+    if (!formData.mobile.trim()) errors.mobile = "Mobile is required";
+    if (!/^[0-9+\-()\s]{7,}$/.test(formData.mobile.trim()))
+      errors.mobile = "Enter a valid phone number";
+    if (!formData.email.trim()) errors.email = "Email is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim()))
+      errors.email = "Enter a valid email";
+    if (!formData.resume) errors.resume = "Resume is required";
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -58,9 +60,16 @@ function Navbar() {
       resumeFileName: formData.resume ? formData.resume.name : null,
     };
     // No backend yet: simulate success, log for future integration
-    console.log('Employee referral submission:', payload);
-    alert('Thank you! Your referral has been recorded.');
-    setFormData({ firstName: '', lastName: '', company: '', mobile: '', email: '', resume: null });
+    console.log("Employee referral submission:", payload);
+    alert("Thank you! Your referral has been recorded.");
+    setFormData({
+      firstName: "",
+      lastName: "",
+      company: "",
+      mobile: "",
+      email: "",
+      resume: null,
+    });
     setFormErrors({});
     setIsReferralOpen(false);
   };
@@ -68,71 +77,90 @@ function Navbar() {
   // Close menu when clicking outside (using ref)
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+      if (
+        isMenuOpen &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
         setIsMenuOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMenuOpen]);
 
   const navItems = [
-    { id: 'home', label: 'HOME', to: '/' },
+    { id: "home", label: "HOME", to: "/" },
     {
-      id: 'industry',
-      label: 'INDUSTRY',
-      to: '#',
+      id: "industry",
+      label: "INDUSTRY",
+      to: "#",
       submenu: [
-        { 
-          label: 'IT Services', 
-          to: '#',
-          submenu: [
-            { label: 'Enterprise Transformation and Automation', to: '/industry/it-services/enterprise-transformation' },
-          ]
-        },
-        { label: 'Healthcare', to: '/industry/healthcare' },
-        { label: 'Manufacturing', to: '/industry/manufacturing' },
-        { 
-          label: 'Consulting', 
-          to: '/industry/consulting',
-          submenu: [
-            { label: 'Project and Program Management', to: '/industry/consulting/project-program-management' },
-            { label: 'Managed Service Provider', to: '/industry/consulting/managed-service-provider' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 'recruiting',
-      label: 'RECRUITING SERVICES',
-      to: '#',
-      submenu: [
-        { label: 'Contingent Staff Augmentation', to: '/recruiting/contingent-staffing' },
         {
-          label: 'Talent Advisory',
-          to: '#',
+          label: "IT Services",
+          to: "#",
           submenu: [
-            { label: 'Contractual Hiring', to: '/recruiting/contractual-hiring' },
-            { label: 'Permanent Hiring', to: '/recruiting/permanent-hiring' }
-          ]
+            {
+              label: "Enterprise Transformation and Automation",
+              to: "/industry/it-services/enterprise-transformation",
+            },
+          ],
         },
-        { label: 'On-demand RPO', to: '/recruiting/on-demand-rpo' }
-      ]
+        { label: "Healthcare", to: "/industry/healthcare" },
+        { label: "Manufacturing", to: "/industry/manufacturing" },
+        {
+          label: "Consulting",
+          to: "/industry/consulting",
+          submenu: [
+            {
+              label: "Project and Program Management",
+              to: "/industry/consulting/project-program-management",
+            },
+            {
+              label: "Managed Service Provider",
+              to: "/industry/consulting/managed-service-provider",
+            },
+          ],
+        },
+      ],
     },
     {
-      id: 'about',
-      label: 'ABOUT US',
-      to: '/about',
+      id: "recruiting",
+      label: "RECRUITING SERVICES",
+      to: "#",
       submenu: [
-        { label: 'About Crossword', hash: 'about-crossword' },
-        { label: 'The Crossword Way', hash: 'crossword-way' },
-        { label: 'Our Mission', hash: 'mission' },
-        { label: 'Crossword Cares', hash: 'crossword-cares' },
-        { label: 'Diversity, Equity, and Inclusion', hash: 'dei' },
-      ]
+        {
+          label: "Contingent Staff Augmentation",
+          to: "/recruiting/contingent-staffing",
+        },
+        {
+          label: "Talent Advisory",
+          to: "#",
+          submenu: [
+            {
+              label: "Contractual Hiring",
+              to: "/recruiting/contractual-hiring",
+            },
+            { label: "Permanent Hiring", to: "/recruiting/permanent-hiring" },
+          ],
+        },
+        { label: "On-demand RPO", to: "/recruiting/on-demand-rpo" },
+      ],
     },
-    { id: 'contact', label: 'CONTACT US', to: '/contact' },
-    { id: 'careers', label: 'CAREERS', to: '/careers' }
+    {
+      id: "about",
+      label: "ABOUT US",
+      to: "/about",
+      submenu: [
+        { label: "About Crossword", hash: "about-crossword" },
+        { label: "The Crossword Way", hash: "crossword-way" },
+        { label: "Our Mission", hash: "mission" },
+        { label: "Crossword Cares", hash: "crossword-cares" },
+        { label: "Diversity, Equity, and Inclusion", hash: "dei" },
+      ],
+    },
+    { id: "contact", label: "CONTACT US", to: "/contact" },
+    { id: "careers", label: "CAREERS", to: "/careers" },
   ];
 
   const toggleSubmenu = (itemId) => {
@@ -143,22 +171,35 @@ function Navbar() {
     <>
       <nav
         className="fixed top-0 left-0 right-0 z-50 shadow-md"
-        style={{ backgroundColor: '#E4E0E1' }}
+        style={{ backgroundColor: "#E4E0E1" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Navbar: only visible on small screens */}
-          <div className="flex w-full items-center justify-between sm:hidden h-16" ref={mobileMenuRef}>
+          <div
+            className="flex w-full items-center justify-between sm:hidden h-16"
+            ref={mobileMenuRef}
+          >
             <Link to="/" className="flex items-center gap-3 cursor-pointer">
               <div className="relative">
-                <img 
-                  src={logoSrc} 
-                  alt="Logo" 
-                  className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border-2 border-brown-DEFAULT shadow-lg object-cover transition-transform duration-300 hover:scale-110" 
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border-2 border-[#6b4f3b] shadow-md object-cover transition-transform duration-300 hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-sand-dark to-brown-light rounded-xl blur-lg opacity-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#d1bfa7] to-[#6b4f3b] rounded-full blur-lg opacity-20"></div>
               </div>
+              {/* <div className="flex flex-col leading-tight">
+                <span className="text-lg sm:text-xl font-bold text-[#4b2e1e]">
+                  CROSSWORD
+                </span>
+                <span className="text-xs sm:text-sm text-gray-600 tracking-wide">
+                  STAFFING SOLUTIONS
+                </span>
+              </div> */}
             </Link>
-            <span className="font-black text-lg text-darkbrown bg-clip-text">CROSSWORD</span>
+            <span className="font-black text-lg text-darkbrown bg-clip-text">
+              CROSSWORD
+            </span>
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -173,23 +214,26 @@ function Navbar() {
             </div>
           </div>
           {/* Desktop Navbar: only visible on sm and up */}
-          <div className="hidden sm:flex justify-between items-center h-16 lg:h-20" ref={mobileMenuRef}>
+          <div
+            className="hidden sm:flex justify-between items-center h-16 lg:h-20"
+            ref={mobileMenuRef}
+          >
             <Link to="/" className="flex items-center gap-3 cursor-pointer">
               <div className="relative">
-                <img 
-                  src={logoSrc} 
-                  alt="Logo" 
-                  className="h-14 w-14 rounded-full border-2" 
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className="h-10 w-10 sm:h-14 sm:w-14 rounded-full border-2 border-[#6b4f3b] shadow-md object-cover transition-transform duration-300 hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-sand-dark to-brown-light rounded-xl blur-lg opacity-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#d1bfa7] to-[#6b4f3b] rounded-full blur-lg opacity-20"></div>
               </div>
-              <div className="hidden sm:block">
-                <span className="font-black text-xl lg:text-2xl text-darkbrown bg-clip-text">
+              <div className="flex flex-col leading-tight">
+                <span className="text-lg sm:text-xl font-bold text-[#4b2e1e]">
                   CROSSWORD
                 </span>
-                <div className="text-xs lg:text-sm text-gray-600 font-medium -mt-1">
+                <span className="text-xs sm:text-sm text-gray-600 tracking-wide">
                   STAFFING SOLUTIONS
-                </div>
+                </span>
               </div>
             </Link>
             {/* Desktop Navigation */}
@@ -199,32 +243,39 @@ function Navbar() {
                   key={item.id}
                   className="relative group"
                   onMouseEnter={() => {
-                    if (window.innerWidth >= 640 && item.submenu) setActiveSubmenu(item.id);
+                    if (window.innerWidth >= 640 && item.submenu)
+                      setActiveSubmenu(item.id);
                   }}
                   onMouseLeave={() => {
-                    if (window.innerWidth >= 640 && item.submenu) setActiveSubmenu(null);
+                    if (window.innerWidth >= 640 && item.submenu)
+                      setActiveSubmenu(null);
                   }}
                 >
                   {item.submenu ? (
                     <button
                       type="button"
                       className={`flex items-center gap-1 px-4 py-2 rounded-lg font-semibold text-sm tracking-wide transition-all duration-300 ${
-                        location.pathname === item.to || activeSubmenu === item.id
-                          ? 'text-brown-DEFAULT bg-sand-light shadow-sm'
-                          : 'text-gray-700 hover:text-brown-DEFAULT hover:bg-sand-light'
+                        location.pathname === item.to ||
+                        activeSubmenu === item.id
+                          ? "text-brown-DEFAULT bg-sand-light shadow-sm"
+                          : "text-gray-700 hover:text-brown-DEFAULT hover:bg-sand-light"
                       }`}
                       tabIndex={0}
                     >
                       {item.label}
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeSubmenu === item.id ? 'rotate-180' : ''}`} />
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          activeSubmenu === item.id ? "rotate-180" : ""
+                        }`}
+                      />
                     </button>
                   ) : (
                     <Link
                       to={item.to}
                       className={`flex items-center gap-1 px-4 py-2 rounded-lg font-semibold text-sm tracking-wide transition-all duration-300 ${
                         location.pathname === item.to
-                          ? 'text-brown-DEFAULT bg-sand-light shadow-sm'
-                          : 'text-gray-700 hover:text-brown-DEFAULT hover:bg-sand-light'
+                          ? "text-brown-DEFAULT bg-sand-light shadow-sm"
+                          : "text-gray-700 hover:text-brown-DEFAULT hover:bg-sand-light"
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -233,9 +284,13 @@ function Navbar() {
                   )}
                   {/* Desktop Dropdown */}
                   {item.submenu && (
-                    <div className={`absolute top-full left-0 mt-1 w-72 bg-sand-light rounded-xl shadow-xl border border-gray-200 py-2 transition-all duration-300 ${
-                      activeSubmenu === item.id ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
-                    }`}>
+                    <div
+                      className={`absolute top-full left-0 mt-1 w-72 bg-sand-light rounded-xl shadow-xl border border-gray-200 py-2 transition-all duration-300 ${
+                        activeSubmenu === item.id
+                          ? "opacity-100 visible translate-y-0"
+                          : "opacity-0 invisible -translate-y-2"
+                      }`}
+                    >
                       {item.submenu.map((subItem, idx) => (
                         <div key={idx}>
                           {subItem.submenu ? (
@@ -248,39 +303,50 @@ function Navbar() {
                                 }}
                               >
                                 {subItem.label}
-                                {subItem.submenu && <ChevronDown className="w-3 h-3 ml-2 -rotate-90" />}
+                                {subItem.submenu && (
+                                  <ChevronDown className="w-3 h-3 ml-2 -rotate-90" />
+                                )}
                               </button>
                               {/* Nested submenu */}
                               {subItem.submenu && (
                                 <div className="absolute left-full top-0 ml-1 w-64 bg-sand-light rounded-xl shadow-xl border border-gray-200 py-2 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-200">
-                                  {subItem.submenu.map((nestedItem, nestedIdx) => (
-                                    <a
-                                      key={nestedIdx}
-                                      href={nestedItem.to}
-                                      className="w-full text-left px-4 py-2 text-sm text-gray-700 rounded-lg transition-colors duration-200 block hover:bg-tan hover:text-brown-DEFAULT focus:bg-tan focus:text-brown-DEFAULT"
-                                      onClick={() => {
-                                        setIsMenuOpen(false);
-                                        setActiveSubmenu(null);
-                                      }}
-                                    >
-                                      {nestedItem.label}
-                                    </a>
-                                  ))}
+                                  {subItem.submenu.map(
+                                    (nestedItem, nestedIdx) => (
+                                      <a
+                                        key={nestedIdx}
+                                        href={nestedItem.to}
+                                        className="w-full text-left px-4 py-2 text-sm text-gray-700 rounded-lg transition-colors duration-200 block hover:bg-tan hover:text-brown-DEFAULT focus:bg-tan focus:text-brown-DEFAULT"
+                                        onClick={() => {
+                                          setIsMenuOpen(false);
+                                          setActiveSubmenu(null);
+                                        }}
+                                      >
+                                        {nestedItem.label}
+                                      </a>
+                                    )
+                                  )}
                                 </div>
                               )}
                             </div>
                           ) : (
                             <a
-                              href={item.id === 'about' ? `/about#${subItem.hash}` : subItem.to}
+                              href={
+                                item.id === "about"
+                                  ? `/about#${subItem.hash}`
+                                  : subItem.to
+                              }
                               className="w-full text-left px-4 py-2 text-sm text-gray-700 rounded-lg transition-colors duration-200 block hover:bg-tan hover:text-brown-DEFAULT focus:bg-tan focus:text-brown-DEFAULT"
-                              onClick={e => {
+                              onClick={(e) => {
                                 setIsMenuOpen(false);
                                 setActiveSubmenu(null);
-                                if (item.id === 'about') {
-                                  if (location.pathname === '/about') {
+                                if (item.id === "about") {
+                                  if (location.pathname === "/about") {
                                     e.preventDefault();
-                                    const el = document.getElementById(subItem.hash);
-                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                    const el = document.getElementById(
+                                      subItem.hash
+                                    );
+                                    if (el)
+                                      el.scrollIntoView({ behavior: "smooth" });
                                   }
                                 }
                               }}
@@ -313,20 +379,26 @@ function Navbar() {
         {isMenuOpen && (
           <div className="fixed inset-0 z-50 flex lg:hidden justify-end">
             {/* Overlay */}
-            <div className="flex-1 bg-black bg-opacity-40" onMouseDown={() => setIsMenuOpen(false)} />
+            <div
+              className="flex-1 bg-black bg-opacity-40"
+              onMouseDown={() => setIsMenuOpen(false)}
+            />
             {/* Drawer - Completely solid background with proper scrolling */}
             <div
               className="h-full w-64 bg-white shadow-2xl border-l border-gray-200 transition-transform duration-300 max-w-[80vw] flex flex-col px-4 py-6 overflow-y-auto"
-              style={{ backgroundColor: '#ffffff' }}
-              onMouseDown={e => e.stopPropagation()}
+              style={{ backgroundColor: "#ffffff" }}
+              onMouseDown={(e) => e.stopPropagation()}
             >
               {/* Close button at top */}
               <div className="flex justify-end mb-4 flex-shrink-0">
-                <button onClick={() => setIsMenuOpen(false)} className="p-2 rounded-lg hover:bg-gray-100">
+                <button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="p-2 rounded-lg hover:bg-gray-100"
+                >
                   <X className="w-6 h-6 text-gray-700" />
                 </button>
               </div>
-              
+
               {/* Navigation items container */}
               <div className="flex-1 space-y-2">
                 {navItems.map((item) => (
@@ -335,17 +407,29 @@ function Navbar() {
                       <button
                         onClick={() => toggleSubmenu(item.id)}
                         className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 text-left
-                          ${location.pathname === item.to ? 'text-brown-DEFAULT bg-gray-100 shadow-sm' : 'text-gray-700 hover:text-brown-DEFAULT hover:bg-gray-100'}
+                          ${
+                            location.pathname === item.to
+                              ? "text-brown-DEFAULT bg-gray-100 shadow-sm"
+                              : "text-gray-700 hover:text-brown-DEFAULT hover:bg-gray-100"
+                          }
                         `}
                       >
                         {item.label}
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeSubmenu === item.id ? 'rotate-180' : ''}`} />
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            activeSubmenu === item.id ? "rotate-180" : ""
+                          }`}
+                        />
                       </button>
                     ) : (
                       <Link
                         to={item.to}
                         className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 text-left
-                          ${location.pathname === item.to ? 'text-brown-DEFAULT bg-gray-100 shadow-sm' : 'text-gray-700 hover:text-brown-DEFAULT hover:bg-gray-100'}
+                          ${
+                            location.pathname === item.to
+                              ? "text-brown-DEFAULT bg-gray-100 shadow-sm"
+                              : "text-gray-700 hover:text-brown-DEFAULT hover:bg-gray-100"
+                          }
                         `}
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -354,11 +438,13 @@ function Navbar() {
                     )}
                     {/* Mobile Submenu - Fixed scrolling issue */}
                     {item.submenu && (
-                      <div className={`transition-all duration-300 ${
-                        activeSubmenu === item.id 
-                          ? 'max-h-screen opacity-100' 
-                          : 'max-h-0 opacity-0 overflow-hidden'
-                      } pl-4`}>
+                      <div
+                        className={`transition-all duration-300 ${
+                          activeSubmenu === item.id
+                            ? "max-h-screen opacity-100"
+                            : "max-h-0 opacity-0 overflow-hidden"
+                        } pl-4`}
+                      >
                         <div className="space-y-1 py-2">
                           {item.submenu.map((subItem, idx) => (
                             <div key={idx} className="space-y-1">
@@ -375,33 +461,44 @@ function Navbar() {
                                     {subItem.label}
                                   </a>
                                   <div className="pl-4 space-y-1">
-                                    {subItem.submenu.map((nestedItem, nestedIdx) => (
-                                      <a
-                                        key={nestedIdx}
-                                        href={nestedItem.to}
-                                        className="w-full text-left px-4 py-2 text-xs text-gray-500 rounded-lg transition-colors duration-200 block hover:bg-tan hover:text-brown-DEFAULT focus:bg-tan focus:text-brown-DEFAULT"
-                                        onClick={() => {
-                                          setIsMenuOpen(false);
-                                          setActiveSubmenu(null);
-                                        }}
-                                      >
-                                        • {nestedItem.label}
-                                      </a>
-                                    ))}
+                                    {subItem.submenu.map(
+                                      (nestedItem, nestedIdx) => (
+                                        <a
+                                          key={nestedIdx}
+                                          href={nestedItem.to}
+                                          className="w-full text-left px-4 py-2 text-xs text-gray-500 rounded-lg transition-colors duration-200 block hover:bg-tan hover:text-brown-DEFAULT focus:bg-tan focus:text-brown-DEFAULT"
+                                          onClick={() => {
+                                            setIsMenuOpen(false);
+                                            setActiveSubmenu(null);
+                                          }}
+                                        >
+                                          • {nestedItem.label}
+                                        </a>
+                                      )
+                                    )}
                                   </div>
                                 </div>
                               ) : (
                                 <a
-                                  href={item.id === 'about' ? `/about#${subItem.hash}` : subItem.to}
+                                  href={
+                                    item.id === "about"
+                                      ? `/about#${subItem.hash}`
+                                      : subItem.to
+                                  }
                                   className="w-full text-left px-4 py-2 text-sm text-gray-600 rounded-lg transition-colors duration-200 block hover:bg-tan hover:text-brown-DEFAULT focus:bg-tan focus:text-brown-DEFAULT"
-                                  onClick={e => {
+                                  onClick={(e) => {
                                     setIsMenuOpen(false);
                                     setActiveSubmenu(null);
-                                    if (item.id === 'about') {
-                                      if (location.pathname === '/about') {
+                                    if (item.id === "about") {
+                                      if (location.pathname === "/about") {
                                         e.preventDefault();
-                                        const el = document.getElementById(subItem.hash);
-                                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                        const el = document.getElementById(
+                                          subItem.hash
+                                        );
+                                        if (el)
+                                          el.scrollIntoView({
+                                            behavior: "smooth",
+                                          });
                                       }
                                     }
                                   }}
@@ -428,7 +525,7 @@ function Navbar() {
                   Employee Referral
                 </button>
               </div>
-              
+
               <div className="mt-auto pt-4 border-t border-gray-200 flex-shrink-0" />
             </div>
           </div>
@@ -446,8 +543,12 @@ function Navbar() {
           <div className="relative bg-white w-[92vw] max-w-2xl rounded-2xl shadow-2xl border border-gray-200 p-6 sm:p-8 mx-4">
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Employee Referral</h2>
-                <p className="text-sm text-gray-500 mt-1">Refer a candidate and help us grow the team.</p>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+                  Employee Referral
+                </h2>
+                <p className="text-sm text-gray-500 mt-1">
+                  Refer a candidate and help us grow the team.
+                </p>
               </div>
               <button
                 onClick={closeReferral}
@@ -461,83 +562,133 @@ function Navbar() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    First Name
+                  </label>
                   <input
                     type="text"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.firstName ? 'border-red-400' : 'border-gray-300'}`}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${
+                      formErrors.firstName
+                        ? "border-red-400"
+                        : "border-gray-300"
+                    }`}
                     placeholder="Albert"
                   />
-                  {formErrors.firstName && <p className="mt-1 text-xs text-red-500">{formErrors.firstName}</p>}
+                  {formErrors.firstName && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {formErrors.firstName}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Last Name
+                  </label>
                   <input
                     type="text"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.lastName ? 'border-red-400' : 'border-gray-300'}`}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${
+                      formErrors.lastName ? "border-red-400" : "border-gray-300"
+                    }`}
                     placeholder="Doe"
                   />
-                  {formErrors.lastName && <p className="mt-1 text-xs text-red-500">{formErrors.lastName}</p>}
+                  {formErrors.lastName && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {formErrors.lastName}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Company
+                  </label>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.company ? 'border-red-400' : 'border-gray-300'}`}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${
+                      formErrors.company ? "border-red-400" : "border-gray-300"
+                    }`}
                     placeholder="Company"
                   />
-                  {formErrors.company && <p className="mt-1 text-xs text-red-500">{formErrors.company}</p>}
+                  {formErrors.company && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {formErrors.company}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Mobile</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Mobile
+                  </label>
                   <input
                     type="tel"
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.mobile ? 'border-red-400' : 'border-gray-300'}`}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${
+                      formErrors.mobile ? "border-red-400" : "border-gray-300"
+                    }`}
                     placeholder="e.g., +1 555 123 4567"
                   />
-                  {formErrors.mobile && <p className="mt-1 text-xs text-red-500">{formErrors.mobile}</p>}
+                  {formErrors.mobile && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {formErrors.mobile}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${formErrors.email ? 'border-red-400' : 'border-gray-300'}`}
+                    className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brown-DEFAULT ${
+                      formErrors.email ? "border-red-400" : "border-gray-300"
+                    }`}
                     placeholder="you@example.com"
                   />
-                  {formErrors.email && <p className="mt-1 text-xs text-red-500">{formErrors.email}</p>}
+                  {formErrors.email && (
+                    <p className="mt-1 text-xs text-red-500">
+                      {formErrors.email}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Resume</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Resume
+                </label>
                 <input
                   type="file"
                   name="resume"
                   onChange={handleChange}
                   accept=".pdf,.doc,.docx,.txt"
-                  className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none file:mr-3 file:px-3 file:py-2 file:rounded-md file:border-0 file:bg-sand-light file:text-gray-700 ${formErrors.resume ? 'border-red-400' : 'border-gray-300'}`}
+                  className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none file:mr-3 file:px-3 file:py-2 file:rounded-md file:border-0 file:bg-sand-light file:text-gray-700 ${
+                    formErrors.resume ? "border-red-400" : "border-gray-300"
+                  }`}
                 />
-                {formErrors.resume && <p className="mt-1 text-xs text-red-500">{formErrors.resume}</p>}
+                {formErrors.resume && (
+                  <p className="mt-1 text-xs text-red-500">
+                    {formErrors.resume}
+                  </p>
+                )}
               </div>
 
               <div className="flex items-center justify-end gap-3 pt-2">
