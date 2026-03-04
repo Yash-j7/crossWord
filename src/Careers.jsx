@@ -1,8 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Filter, MapPin, Briefcase, FileDown, ExternalLink, Mail, Search, X, Clock, Building } from "lucide-react";
-import samplePDF from "../src/assets/Sample.pdf";
-import projectEngineerPDF from "../src/assets/projectEngg_JD.pdf";
-import electricalCADDesignerPDF from "../src/assets/CAD_JD.pdf";
+import validationEngineerPDF from "../src/assets/ValidationEngg.pdf"
 import { Link } from "react-router-dom";
 export default function Careers() {
   const [query, setQuery] = useState("");
@@ -16,27 +14,17 @@ export default function Careers() {
     () => [
       {
         id: "CX-1001",
-        title: "Electrical CAD Designer",
-        type: "Full-time",
-        location: "Alpharetta, GA",
-        // experienceYears: 3,
-        description: "Seeking an experienced Electrical CAD Designer skilled in AutoCAD Electrical and electrical system design (oil & gas), to draft, design, and guide junior staff under general supervision",
-        note: "This position is eligible for the employment referral program. The employee will be offered a referral fee of $500 per successful referral. We thank you for your participation.",
-        pdfPath: electricalCADDesignerPDF,
-        department: "Engineering",
-        postedDate: "24 Sep 2025"
-      },
-      {
-        id: "CX-1002",
-        title: "Project Engineer",
+        title: "Validation Engineers",
         type: "Full-time",
         location: "Cumming, GA",
-        // experienceYears: 3,
-        description: "Lead end-to-end pharmaceutical CAPEX projects from design to commissioning, ensuring quality, budget, and schedule compliance.",
-        note: "This position is eligible for the employment referral program. The employee will be offered a referral fee of $500 per successful referral. We thank you for your participation.",
-        pdfPath: projectEngineerPDF,
+        experienceYears: 1,
+        description:
+          "Extract, compile and organize healthcare data; analyze data to assist management; perform risk assessments and identify critical parameters affecting product quality; collaborate with QA, Manufacturing and Engineering teams; support automation and process activities; and ensure validation activities meet regulatory requirements (GMP, GDP, SOPs, CAPA, Gage R&R, etc.). Full-time role based in Cumming, GA with travel to client locations within the US.",
+        note:
+          "This position is eligible for the employee referral program. Respond to: HR, Crossword Staffing Solutions LLC, 410 Peachtree Parkway, STE 4245, Cumming GA 30041.",
+        pdfPath: validationEngineerPDF,
         department: "Engineering",
-        postedDate: "24 Sep 2025"
+        postedDate: "4 Mar 2025"
       }
   //     { 
   //       id: "CX-1001", 
