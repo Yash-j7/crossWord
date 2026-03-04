@@ -21,7 +21,7 @@ export default function Careers() {
         description:
           "Extract, compile and organize healthcare data; analyze data to assist management; perform risk assessments and identify critical parameters affecting product quality; collaborate with QA, Manufacturing and Engineering teams; support automation and process activities; and ensure validation activities meet regulatory requirements (GMP, GDP, SOPs, CAPA, Gage R&R, etc.). Full-time role based in Cumming, GA with travel to client locations within the US.",
         note:
-          "This position is eligible for the employee referral program. Respond to: HR, Crossword Staffing Solutions LLC, 410 Peachtree Parkway, STE 4245, Cumming GA 30041.",
+          "This position is eligible for the employment referral program. The employee will be offered a referral fee of $500 per successful referral. We thank you for your participation.",
         pdfPath: validationEngineerPDF,
         department: "Engineering",
         postedDate: "4 Mar 2026"
