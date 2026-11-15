@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Filter, MapPin, Briefcase, FileDown, ExternalLink, Mail, Search, X, Clock, Building } from "lucide-react";
-import validationEngineerPDF from "../src/assets/ValidationEngg.pdf"
+import projectManagerPDF from "../src/assets/Project-Manager.pdf"
 import { Link } from "react-router-dom";
 export default function Careers() {
   const [query, setQuery] = useState("");
@@ -13,18 +13,18 @@ export default function Careers() {
   const jobs = useMemo(
     () => [
       {
-        id: "CX-1001",
-        title: "Validation Engineers",
+        id: "CX-1002",
+        title: "Project Manager",
         type: "Full-time",
         location: "Cumming, GA",
-        experienceYears: 1,
+        experienceYears: 5,
         description:
-          "Extract, compile and organize healthcare data; analyze data to assist management; perform risk assessments and identify critical parameters affecting product quality; collaborate with QA, Manufacturing and Engineering teams; support automation and process activities; and ensure validation activities meet regulatory requirements (GMP, GDP, SOPs, CAPA, Gage R&R, etc.). Full-time role based in Cumming, GA with travel to client locations within the US.",
+          "Manage information technology projects from planning and initiation through execution, course correction, and closure. Develop project timelines and milestones; monitor progress against deadlines, quality standards, and cost targets; lead technical staff; facilitate daily stand-ups, iteration planning, and sprint planning; define project requirements and support estimation; prevent over-commitment and scope creep; serve as a liaison between business and technical teams; track sprint metrics and team maturity; resolve project issues; and ensure deliverables meet quality standards. Requires experience with tools such as JIRA, Confluence, Power BI, Azure DevOps, SharePoint, PeopleSoft, MS Project, Visio, Microsoft Office, AWS, and GCP. Full-time role based in Cumming, GA with travel to client locations within the US. Requirements: Bachelor's degree or foreign equivalent in Computer Science, any Engineering discipline, Information Systems, Information Technology, Commerce, or a related field plus 5 years of experience, including at least 3 years leading and managing IT projects; OR an Associate's degree or foreign equivalent in one of these fields plus 7 years of progressively responsible experience, including at least 3 years leading and managing IT projects.",
         note:
           "This position is eligible for the employment referral program. The employee will be offered a referral fee of $500 per successful referral. We thank you for your participation.",
-        pdfPath: validationEngineerPDF,
-        department: "Engineering",
-        postedDate: "4 Mar 2026"
+        pdfPath: projectManagerPDF,
+        department: "Project Management",
+        postedDate: "16 Nov 2026"
       }
   //     { 
   //       id: "CX-1001", 
